@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Southernica | Little Ape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --red: #FF1E1E; --bg: #000; --fg: #eee; --muted: #888; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: "Jura", sans-serif; line-height: 1.6; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid #1a1a1a; }
+  header img { height: 44px; image-rendering: pixelated; }
+  nav a { color: var(--muted); text-decoration: none; margin-left: 24px; font-size: 14px; }
+  nav a:hover { color: var(--red); }
+  .hero { text-align: center; padding: 90px 20px 60px; }
+  .hero img.logo { width: 200px; image-rendering: pixelated; margin-bottom: 30px; }
+  .hero h1 { font-size: 56px; letter-spacing: 2px; }
+  .hero p.tag { color: var(--muted); margin: 12px 0 36px; font-size: 18px; }
+  .btn { display: inline-block; background: var(--red); color: #000; font-weight: 700; padding: 14px 34px; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 24px rgba(255,30,30,.45); }
+  .btn:hover { background: #ff4444; }
+  .btn.secondary { background: transparent; color: var(--red); border: 1px solid var(--red); box-shadow: none; margin-left: 12px; }
+  section { padding: 60px 40px; max-width: 1100px; margin: 0 auto; }
+  section h2 { color: var(--red); font-size: 28px; margin-bottom: 18px; }
+  section p { color: #bbb; max-width: 760px; }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 24px; }
+  .gallery img { width: 100%; border: 1px solid #222; display: block; }
+  .about { border-top: 1px solid #1a1a1a; }
+  footer { text-align: center; padding: 40px; color: var(--muted); font-size: 14px; border-top: 1px solid #1a1a1a; }
+  footer a { color: var(--red); text-decoration: none; }
+  @media (max-width: 640px) { header { flex-direction: column; gap: 12px; } .hero h1 { font-size: 36px; } .btn.secondary { margin: 12px 0 0; } }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Southernica logo">
+  <nav>
+    <a href="#game">Game</a>
+    <a href="#about">About</a>
+    <a href="https://github.com/southernica">GitHub</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <img class="logo" src="logo.png" alt="Southernica">
+  <h1>LITTLE APE</h1>
+  <p class="tag">Run. Hide. Survive the facility.</p>
+  <a class="btn" href="https://www.meta.com/experiences/little-ape/1103516269176119/" target="_blank" rel="noopener">Download on Meta Quest</a>
+  <a class="btn secondary" href="#game">See the game</a>
+</div>
+
+<section id="game">
+  <h2>The game</h2>
+  <p>Little Ape is a VR game where you run around a huge facility, away from monsters and creatures. It is a full remake of Lethal Ape, rebuilt with fully original assets. The game is currently in Alpha and is available on the Meta Quest store.</p>
+  <div class="gallery">
+    <img src="images/shot1.png" alt="A large creature with a mining helmet in a storage corridor">
+    <img src="images/shot2.png" alt="A hunched monster under a ceiling light">
+    <img src="images/shot3.png" alt="A blue-lit room with a furnace and pipe">
+    <img src="images/shot4.png" alt="A dim facility hallway with a glowing red machine">
+    <img src="images/shot5.png" alt="A large warehouse floor with a forklift">
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Southernica</h2>
+  <p>Southernica was founded in 2020. We make VR games, remakes of existing games, and PC games. Find our code and projects on <a href="https://github.com/southernica" style="color:var(--red)" target="_blank" rel="noopener">GitHub</a>.</p>
+</section>
+
+<footer>
+  &copy; 2020 Southernica &middot; <a href="https://github.com/southernica" target="_blank" rel="noopener">github.com/southernica</a>
+</footer>
+
+</body>
+</html>
