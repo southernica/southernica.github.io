@@ -1,6 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <title>Rust</title>
-  <path fill="#B7410E" fill-rule="evenodd" d="M 221.15,73.29 L 234.17,25.03 L 277.83,25.03 L 290.85,73.29 L 317.17,80.35 L 352.58,45.06 L 390.39,66.89 L 377.54,115.20 L 396.80,134.46 L 445.11,121.61 L 466.94,159.42 L 431.65,194.83 L 438.71,221.15 L 486.97,234.17 L 486.97,277.83 L 438.71,290.85 L 431.65,317.17 L 466.94,352.58 L 445.11,390.39 L 396.80,377.54 L 377.54,396.80 L 390.39,445.11 L 352.58,466.94 L 317.17,431.65 L 290.85,438.71 L 277.83,486.97 L 234.17,486.97 L 221.15,438.71 L 194.83,431.65 L 159.42,466.94 L 121.61,445.11 L 134.46,396.80 L 115.20,377.54 L 66.89,390.39 L 45.06,352.58 L 80.35,317.17 L 73.29,290.85 L 25.03,277.83 L 25.03,234.17 L 73.29,221.15 L 80.35,194.83 L 45.06,159.42 L 66.89,121.61 L 115.20,134.46 L 134.46,115.20 L 121.61,66.89 L 159.42,45.06 L 194.83,80.35 Z M 186.00,256.00 A 70,70 0 1,0 326.00,256.00 A 70,70 0 1,0 186.00,256.00 Z"/>
-  <circle cx="256" cy="256" r="46" fill="#B7410E"/>
-  <circle cx="256" cy="256" r="26" fill="#1C1C1E"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 120 120">
+<g>
+  <path fill="#B7410E" transform="translate(0.5, 0.5)" stroke="#B7410E" stroke-width="1" stroke-linejoin="round" d="
+    M -9,-15 H 4 C 12,-15 12,-7 4,-7 H -9 Z
+    M -40,22 H 0 V 11 H -9 V 3 H 1 C 12,3 6,22 15,22 H 40
+    V 3 H 34 V 5 C 34,13 25,12 24,7 C 23,2 19,-2 18,-2 C 33,-10 24,-26 12,-26 H -35
+    V -15 H -25 V 11 H -40 Z" />
+  <g id="gear" mask="url(#holes)">
+    <circle r="43" fill="none" stroke="#B7410E" stroke-width="9" />
+    <g id="cogs">
+      <polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" />
+      <g transform="rotate(11.25)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(22.50)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(33.75)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(45.00)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(56.25)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(67.50)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(78.75)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(90.00)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(101.25)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(112.50)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(123.75)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(135.00)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(146.25)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(157.50)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(168.75)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(180.00)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(191.25)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(202.50)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(213.75)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(225.00)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(236.25)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(247.50)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(258.75)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(270.00)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(281.25)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(292.50)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(303.75)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(315.00)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(326.25)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(337.50)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+      <g transform="rotate(348.75)"><polygon stroke="#B7410E" stroke-width="3" stroke-linejoin="round" points="46,3 51,0 46,-3" /></g>
+    </g>
+    <g id="mounts">
+      <polygon stroke="#B7410E" stroke-width="6" stroke-linejoin="round" points="-7,-42 0,-35 7,-42" />
+      <g transform="rotate(72)"><polygon stroke="#B7410E" stroke-width="6" stroke-linejoin="round" points="-7,-42 0,-35 7,-42" /></g>
+      <g transform="rotate(144)"><polygon stroke="#B7410E" stroke-width="6" stroke-linejoin="round" points="-7,-42 0,-35 7,-42" /></g>
+      <g transform="rotate(216)"><polygon stroke="#B7410E" stroke-width="6" stroke-linejoin="round" points="-7,-42 0,-35 7,-42" /></g>
+      <g transform="rotate(288)"><polygon stroke="#B7410E" stroke-width="6" stroke-linejoin="round" points="-7,-42 0,-35 7,-42" /></g>
+    </g>
+  </g>
+  <mask id="holes">
+    <rect x="-60" y="-60" width="120" height="120" fill="#fff"/>
+    <circle cy="-40" r="3" />
+    <g transform="rotate(72)"><circle cy="-40" r="3" /></g>
+    <g transform="rotate(144)"><circle cy="-40" r="3" /></g>
+    <g transform="rotate(216)"><circle cy="-40" r="3" /></g>
+    <g transform="rotate(288)"><circle cy="-40" r="3" /></g>
+  </mask>
+</g>
 </svg>
