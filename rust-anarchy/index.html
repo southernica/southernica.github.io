@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RS Anarchy | Minecraft 26.3 on Horizon</title>
+<meta name="description" content="RS Anarchy: a Minecraft 26.3 anarchy server running Horizon, a custom Rust recode of the Minecraft server. Founded November 15, 2026.">
+<link rel="icon" href="assets/rsanarchy-logo.png">
+<meta property="og:title" content="RS Anarchy">
+<meta property="og:description" content="Minecraft 26.3 anarchy on Horizon, a Rust recode of the Minecraft server.">
+<meta property="og:url" content="https://rsanarchy.org">
+<style>
+  :root {
+    --bg: #1C1C1E;
+    --bg-2: #242427;
+    --surface: #2A2A2E;
+    --surface-2: #323238;
+    --border: #3A3A41;
+    --text: #EDEDEF;
+    --muted: #9C9CA6;
+    --rust: #B7410E;
+    --rust-hi: #E0875F;
+    --claude: #D97757;
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--rust-hi); text-decoration: none; }
+  a:hover { color: var(--claude); }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(28, 28, 30, 0.82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 12px; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; }
+  .brand span em { font-style: normal; color: var(--rust-hi); }
+  nav.links { display: flex; gap: 26px; }
+  nav.links a { color: var(--muted); font-size: 0.95rem; }
+  nav.links a:hover { color: var(--text); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 0.95rem;
+    border: 1px solid transparent; transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--rust), var(--claude)); color: #fff; }
+  .btn-primary:hover { transform: translateY(-1px); color: #fff; }
+  .btn-ghost { border-color: var(--border); color: var(--text); background: var(--surface); }
+  .btn-ghost:hover { border-color: var(--rust-hi); color: var(--text); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 110px 0 96px;
+    text-align: center;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% auto; height: 620px;
+    background: radial-gradient(closest-side, rgba(183, 65, 14, 0.35), transparent 70%),
+                radial-gradient(closest-side at 70% 40%, rgba(217, 119, 87, 0.22), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-logo { width: 96px; height: 96px; border-radius: 24px; box-shadow: 0 18px 50px rgba(183, 65, 14, 0.35); position: relative; }
+  .eyebrow {
+    display: inline-block; margin: 26px 0 18px; padding: 6px 14px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--claude); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase;
+    position: relative;
+  }
+  h1.title {
+    position: relative;
+    font-size: clamp(3rem, 8vw, 5.4rem);
+    font-weight: 800; letter-spacing: -1.5px; line-height: 1.02;
+  }
+  h1.title .grad {
+    background: linear-gradient(120deg, var(--rust-hi), var(--claude) 60%, #F2B49A);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead {
+    position: relative;
+    max-width: 640px; margin: 22px auto 0;
+    color: var(--muted); font-size: 1.15rem;
+  }
+  .hero-actions { position: relative; display: flex; gap: 12px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
+  .chips { position: relative; display: flex; gap: 10px; justify-content: center; margin-top: 40px; flex-wrap: wrap; }
+  .chip {
+    padding: 8px 14px; border-radius: 999px; font-size: 0.88rem; color: var(--text);
+    background: rgba(42, 42, 46, 0.8); border: 1px solid var(--border);
+  }
+  .chip b { color: var(--rust-hi); font-weight: 600; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 84px 0; }
+  section + section { border-top: 1px solid var(--border); }
+  .kicker { color: var(--claude); font-size: 0.82rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+  h2 { font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.8px; margin-top: 10px; }
+  .sub { color: var(--muted); font-size: 1.05rem; max-width: 680px; margin-top: 12px; }
+
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+  .about-grid p + p { margin-top: 16px; }
+  .about-grid p { color: var(--muted); }
+  .about-grid p strong { color: var(--text); font-weight: 600; }
+  .founded {
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 22px;
+    padding: 12px 16px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .founded .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--claude); box-shadow: 0 0 0 4px rgba(217, 119, 87, 0.2); }
+  .stat-card {
+    background: linear-gradient(160deg, var(--surface) 0%, var(--bg-2) 100%);
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 32px;
+  }
+  .stat-row { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .stat-row:last-child { border-bottom: 0; }
+  .stat-row span { color: var(--muted); }
+  .stat-row strong { font-weight: 700; color: var(--text); }
+
+  /* ---------- Logos ---------- */
+  .logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 46px; }
+  .logo-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; transition: border-color .2s ease, transform .2s ease;
+  }
+  .logo-card:hover { border-color: var(--rust); transform: translateY(-3px); }
+  .logo-card img { width: 80px; height: 80px; display: block; }
+  .logo-card h3 { margin-top: 20px; font-size: 1.15rem; font-weight: 700; }
+  .logo-card p { color: var(--muted); font-size: 0.95rem; margin-top: 8px; }
+  .logo-card .files { margin-top: 14px; font-size: 0.8rem; color: var(--claude); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+  /* ---------- Horizon ---------- */
+  .horizon-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 46px; }
+  .panel {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px;
+  }
+  .panel h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+  .panel p { color: var(--muted); }
+  .panel p + p { margin-top: 12px; }
+  .panel ul { list-style: none; margin-top: 14px; display: grid; gap: 10px; }
+  .panel li { color: var(--muted); padding-left: 22px; position: relative; }
+  .panel li::before {
+    content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 2px;
+    background: linear-gradient(135deg, var(--rust), var(--claude));
+  }
+  .panel li strong { color: var(--text); font-weight: 600; }
+  .panel.accent { border-color: rgba(183, 65, 14, 0.55); background: linear-gradient(160deg, rgba(183,65,14,0.16), var(--surface) 55%); }
+
+  /* ---------- Features ---------- */
+  .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 46px; }
+  .feature {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 26px 28px; transition: border-color .2s ease;
+  }
+  .feature:hover { border-color: rgba(217, 119, 87, 0.6); }
+  .feature .idx {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 10px; margin-bottom: 14px;
+    background: rgba(183, 65, 14, 0.2); color: var(--rust-hi); font-weight: 700; font-size: 0.9rem;
+  }
+  .feature h3 { font-size: 1.15rem; font-weight: 700; }
+  .feature p { color: var(--muted); font-size: 0.97rem; margin-top: 8px; }
+  .feature code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem; color: var(--claude); background: rgba(217, 119, 87, 0.1);
+    padding: 2px 7px; border-radius: 6px;
+  }
+  .feature.wide { grid-column: 1 / -1; }
+
+  /* ---------- Commands ---------- */
+  .cmd-table {
+    width: 100%; margin-top: 46px; border-collapse: separate; border-spacing: 0;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  }
+  .cmd-table th, .cmd-table td { padding: 16px 22px; text-align: left; border-bottom: 1px solid var(--border); }
+  .cmd-table th { background: var(--surface-2); color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+  .cmd-table tr:last-child td { border-bottom: 0; }
+  .cmd-table td:first-child code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--rust-hi); font-weight: 600;
+  }
+  .cmd-table td:last-child { color: var(--muted); }
+
+  /* ---------- Join ---------- */
+  .join {
+    margin-top: 46px; text-align: center; padding: 56px 32px; border-radius: 22px;
+    background: radial-gradient(120% 140% at 50% 0%, rgba(183, 65, 14, 0.35), var(--surface) 60%);
+    border: 1px solid rgba(183, 65, 14, 0.5);
+  }
+  .join h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); }
+  .join p { color: var(--muted); margin: 12px auto 0; max-width: 560px; }
+  .join .hero-actions { margin-top: 28px; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 36px 0; color: var(--muted); font-size: 0.9rem; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .foot nav { display: flex; gap: 20px; flex-wrap: wrap; }
+  .foot a { color: var(--muted); }
+  .foot a:hover { color: var(--text); }
+  .fine { margin-top: 18px; font-size: 0.8rem; color: #6F6F78; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 880px) {
+    nav.links { display: none; }
+    .about-grid, .horizon-split { grid-template-columns: 1fr; }
+    .logos { grid-template-columns: 1fr; }
+    .features { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding: 80px 0 72px; }
+    section { padding: 64px 0; }
+    .cmd-table th:nth-child(3), .cmd-table td:nth-child(3) { display: none; }
+    .cmd-table th, .cmd-table td { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <img src="assets/rsanarchy-logo.png" alt="RS Anarchy logo">
+      <span>RS <em>Anarchy</em></span>
+    </a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#horizon">Horizon</a>
+      <a href="#anarchy">Anarchy mode</a>
+      <a href="#commands">Commands</a>
+      <a href="#join">Join</a>
+    </nav>
+    <a class="btn btn-primary" href="#join">Join now</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <img class="hero-logo" src="assets/rsanarchy-logo.png" alt="RS Anarchy logo">
+      <div class="eyebrow">Founded November 15, 2026</div>
+      <h1 class="title">Welcome to <span class="grad">RS Anarchy</span></h1>
+      <p class="lead">A Minecraft 26.3 anarchy server running on Horizon, our Rust recode of the Minecraft server. No Java. No rules you didn't write yourself.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#join">Get started</a>
+        <a class="btn btn-ghost" href="#anarchy">See anarchy features</a>
+      </div>
+      <div class="chips">
+        <span class="chip">Minecraft <b>26.3</b></span>
+        <span class="chip">Runs on <b>Horizon</b></span>
+        <span class="chip">Written in <b>Rust</b></span>
+        <span class="chip">Server <b>rsanarchy.org</b></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="kicker">About the server</div>
+          <h2>Built on Rust, from the ground up</h2>
+          <p>RS Anarchy opened its doors on <strong>November 15th, 2026</strong>. It is an anarchy server: the world is open, the rules are light, and the players make the story. Everything runs on a custom build of the Minecraft server rather than the stock Java one.</p>
+          <p>The server is based on <strong>Minecraft 26.3</strong>, so the game, the blocks and the mechanics match the version you already play. The difference is under the hood, in a server written in Rust.</p>
+          <div class="founded"><span class="dot"></span> Founded November 15, 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-row"><span>Game version</span><strong>Minecraft 26.3</strong></div>
+          <div class="stat-row"><span>Server software</span><strong>Horizon (fork)</strong></div>
+          <div class="stat-row"><span>Language</span><strong>Rust</strong></div>
+          <div class="stat-row"><span>Java required</span><strong>No</strong></div>
+          <div class="stat-row"><span>Founded</span><strong>Nov 15, 2026</strong></div>
+        </div>
+      </div>
+
+      <div class="logos">
+        <div class="logo-card">
+          <img src="assets/rust-logo.png" alt="Rust gear logo">
+          <h3>The Rust logo</h3>
+          <p>A twelve-tooth gear with a hub at its center. It is the mark of the Rust programming language, and the gear is a nod to the language's engineering focus. Its signature color, <strong>#B7410E</strong>, is the orange you see across this site.</p>
+          <div class="files">assets/rust-logo.svg · .png</div>
+        </div>
+        <div class="logo-card">
+          <img src="assets/horizon-logo.png" alt="Horizon logo">
+          <h3>The Horizon logo</h3>
+          <p>A rising sun above a horizon line, layered over three bands of ground. It stands for the project's name and for the upstream server we build on, which is a Rust rewrite of Minecraft Java Edition.</p>
+          <div class="files">assets/horizon-logo.svg · .png</div>
+        </div>
+        <div class="logo-card">
+          <img src="assets/minecraft-logo.png" alt="Minecraft grass block logo">
+          <h3>The grass block</h3>
+          <p>An isometric grass block in the style of the game's own art. It marks the Minecraft side of the server: the world, the blocks and the 26.3 version everyone plays.</p>
+          <div class="files">assets/minecraft-logo.svg · .png</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Horizon -->
+  <section id="horizon">
+    <div class="wrap">
+      <div class="kicker">The server software</div>
+      <h2>Horizon, our Rust recode</h2>
+      <p class="sub">Horizon is an open-source reimplementation of Minecraft: Java Edition 26.3, written from scratch in Rust as one native program with no Java. It reads the same worlds, follows the same rules and generates the same terrain as the Java game. RS Anarchy runs a fork of it with custom additions of our own.</p>
+
+      <div class="horizon-split">
+        <div class="panel">
+          <h3>What Horizon is</h3>
+          <p>Horizon ships no Mojang files and never downloads them. Players need their own copy of Minecraft: Java Edition 26.3, and the server runs on game files prepared from it.</p>
+          <ul>
+            <li><strong>One native program</strong>, no Java runtime needed</li>
+            <li><strong>Checked against vanilla</strong> with differential tests</li>
+            <li><strong>Lighter on memory</strong> than the Java server</li>
+          </ul>
+        </div>
+        <div class="panel accent">
+          <h3>What we added</h3>
+          <p>Our fork keeps Horizon's core and adds our own changes on top, including the anarchy extras that make RS Anarchy what it is: the cracked login, the random spawn, the ignore list and the anarchy commands. The Tab list header and footer are configured separately.</p>
+          <ul>
+            <li><strong>Built on</strong> Minecraft 26.3 and the Rust server</li>
+            <li><strong>Anarchy extras</strong> built in and switched on for RS Anarchy</li>
+            <li><strong>Custom Tab list</strong> with our header, footer and link line</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anarchy mode features -->
+  <section id="anarchy">
+    <div class="wrap">
+      <div class="kicker">Anarchy mode</div>
+      <h2>What's enabled only in anarchy mode</h2>
+      <p class="sub">These features only switch on in anarchy mode. Each one is part of the anarchy extras, and none of them run on the server when anarchy mode is off.</p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="idx">01</div>
+          <h3>Cracked login</h3>
+          <p>Players with an account use <code>/login</code> to get in, and new players create one with <code>/register</code>. You can change your password with <code>/changepassword</code>. Until you log in, you are held frozen and hidden on a platform in the End, and you are kicked if you take too long.</p>
+        </div>
+        <div class="feature">
+          <div class="idx">02</div>
+          <h3>Private password storage</h3>
+          <p>Passwords are never stored or logged in plain text. Each one is salted and stretched with 2,048 rounds of SHA-256 before it reaches the database.</p>
+        </div>
+        <div class="feature">
+          <div class="idx">03</div>
+          <h3>Random spawn</h3>
+          <p>New players, and anyone without a bed, land at a random safe spot within 1,000 blocks of spawn. Water, lava, leaves and cactus are avoided, and you get five seconds of no damage after you land.</p>
+        </div>
+        <div class="feature">
+          <div class="idx">04</div>
+          <h3>Ignore list</h3>
+          <p>Use <code>/ignore &lt;player&gt;</code> to hide someone's chat, emotes, whispers and character lines. It is a toggle, and <code>/ignorelist</code> shows who you have ignored.</p>
+        </div>
+        <div class="feature">
+          <div class="idx">05</div>
+          <h3>Whispers and skins</h3>
+          <p><code>/whisper &lt;player&gt; &lt;message&gt;</code> sends a private message, and <code>/skin set &lt;nickname&gt;</code> puts a named Mojang profile's skin on your character.</p>
+        </div>
+        <div class="feature">
+          <div class="idx">06</div>
+          <h3>World statistics</h3>
+          <p><code>/worldstats</code> shows how many players have spawned on the server at least once, how old the map is, and how much the world weighs on disk.</p>
+        </div>
+        <div class="feature wide">
+          <div class="idx">07</div>
+          <h3>Discord and social links</h3>
+          <p><code>/discord</code> and <code>/addsocial</code> give the server's links, so you always know where the community lives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commands -->
+  <section id="commands">
+    <div class="wrap">
+      <div class="kicker">Quick reference</div>
+      <h2>Anarchy commands</h2>
+      <p class="sub">Everything you type to use the anarchy extras, in one place.</p>
+
+      <table class="cmd-table">
+        <thead>
+          <tr><th>Command</th><th>What it does</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>/register</code></td><td>Create your account and password</td><td>First login only</td></tr>
+          <tr><td><code>/login</code></td><td>Log in to your account</td><td>5 failed tries means a 60-second wait</td></tr>
+          <tr><td><code>/changepassword</code></td><td>Change your password</td><td>Logged-in players only</td></tr>
+          <tr><td><code>/ignore &lt;player&gt;</code></td><td>Toggle ignoring a player</td><td>Hides chat, emotes and whispers</td></tr>
+          <tr><td><code>/ignorelist</code></td><td>List the players you ignore</td><td></td></tr>
+          <tr><td><code>/whisper &lt;player&gt; &lt;message&gt;</code></td><td>Send a private message</td><td>Alias of <code>/msg</code></td></tr>
+          <tr><td><code>/skin set &lt;nickname&gt;</code></td><td>Use a Mojang profile's skin</td><td>10-second cooldown between lookups</td></tr>
+          <tr><td><code>/worldstats</code></td><td>Server and world statistics</td><td></td></tr>
+          <tr><td><code>/discord</code></td><td>Get the Discord link</td><td></td></tr>
+          <tr><td><code>/addsocial</code></td><td>Get the social links</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Join -->
+  <section id="join">
+    <div class="wrap">
+      <div class="join">
+        <div class="kicker">Ready when you are</div>
+        <h2>Join RS Anarchy</h2>
+        <p>Founded November 15, 2026. Bring your own copy of Minecraft 26.3, connect to rsanarchy.org, and make your own story.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://discord.gg/YOUR-INVITE">Join our Discord</a>
+          <a class="btn btn-ghost" href="https://playhorizon.dev">About Horizon</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>&copy; 2026 RS Anarchy. All rights reserved.</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#horizon">Horizon</a>
+        <a href="#anarchy">Anarchy mode</a>
+        <a href="#commands">Commands</a>
+        <a href="https://discord.gg/YOUR-INVITE">Discord</a>
+      </nav>
+    </div>
+    <p class="fine">RS Anarchy is not affiliated with Mojang, Microsoft, or the Rust project. Minecraft is a trademark of Mojang Studios. Horizon is a separate open-source project.</p>
+  </div>
+</footer>
+
+</body>
+</html>
