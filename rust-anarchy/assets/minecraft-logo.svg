@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Minecraft grass block</title>
+  <polygon points="256,64 448,160 256,256 64,160" fill="#7CBD4A"/>
+  <polygon points="64,160 256,256 256,448 64,352" fill="#8B5A2B"/>
+  <polygon points="256,256 448,160 448,352 256,448" fill="#6B4320"/>
+  <polygon points="64,160 256,256 256,286 64,190" fill="#5E9E33"/>
+  <polygon points="256,256 448,160 448,190 256,286" fill="#5E9E33"/>
+  <g stroke="#000" stroke-opacity="0.12" stroke-width="4" fill="none">
+    <path d="M64 224 L256 320 L256 352 M256 320 L448 224"/>
+  </g>
+</svg>
